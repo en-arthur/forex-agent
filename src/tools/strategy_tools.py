@@ -37,8 +37,8 @@ def run_strategy_for_pair(pair: str) -> Recommendation:
     Returns a Recommendation Pydantic object
     """
 
-    # --- 1️⃣ Market data ---
-    candles: List[Candle] = fetch_forex_candles(pair, days=3)
+    # --- 1️⃣ Market data (60 days needed for EMA50/MACD) ---
+    candles: List[Candle] = fetch_forex_candles(pair, interval="1d", days=60)
 
     # --- 2️⃣ News data ---
     currency_code = pair[:3].upper()
